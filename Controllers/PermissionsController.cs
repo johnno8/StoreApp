@@ -11,17 +11,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace StoreApp.Controllers
 {
-    public class UsersController : Controller
+    public class PermissionsController : Controller
     {
         private readonly StoreAppContext _context;
 
-        public UsersController(StoreAppContext context)
+        public PermissionsController(StoreAppContext context)
         {
             _context = context;
         }
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Users.ToListAsync());
+            return View(await _context.Permissions.ToListAsync());
         }
 
         public IActionResult Error()

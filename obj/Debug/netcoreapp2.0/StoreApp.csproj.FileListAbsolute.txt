@@ -1,0 +1,10 @@
+/Users/johnokeeffe/dotnet/StoreApp/bin/Debug/netcoreapp2.0/StoreApp.deps.json
+/Users/johnokeeffe/dotnet/StoreApp/bin/Debug/netcoreapp2.0/StoreApp.runtimeconfig.json
+/Users/johnokeeffe/dotnet/StoreApp/bin/Debug/netcoreapp2.0/StoreApp.runtimeconfig.dev.json
+/Users/johnokeeffe/dotnet/StoreApp/bin/Debug/netcoreapp2.0/StoreApp.dll
+/Users/johnokeeffe/dotnet/StoreApp/bin/Debug/netcoreapp2.0/StoreApp.pdb
+/Users/johnokeeffe/dotnet/StoreApp/obj/Debug/netcoreapp2.0/StoreApp.csproj.CoreCompileInputs.cache
+/Users/johnokeeffe/dotnet/StoreApp/obj/Debug/netcoreapp2.0/StoreApp.AssemblyInfoInputs.cache
+/Users/johnokeeffe/dotnet/StoreApp/obj/Debug/netcoreapp2.0/StoreApp.AssemblyInfo.cs
+/Users/johnokeeffe/dotnet/StoreApp/obj/Debug/netcoreapp2.0/StoreApp.dll
+/Users/johnokeeffe/dotnet/StoreApp/obj/Debug/netcoreapp2.0/StoreApp.pdb

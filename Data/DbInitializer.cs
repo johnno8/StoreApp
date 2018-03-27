@@ -41,13 +41,36 @@ namespace StoreApp.Data
             }
             context.SaveChanges();
 
+            // var userpermissions = new UserPermission[]
+            // {
+            // new UserPermission{UserID=1,PermissionID=2},
+            // new UserPermission{UserID=1,PermissionID=3},
+            // new UserPermission{UserID=2,PermissionID=1},
+            // new UserPermission{UserID=3,PermissionID=2},
+            // new UserPermission{UserID=4,PermissionID=2}
+            // };
             var userpermissions = new UserPermission[]
             {
-            new UserPermission{UserID=1,PermissionID=2},
-            new UserPermission{UserID=1,PermissionID=3},
-            new UserPermission{UserID=2,PermissionID=1},
-            new UserPermission{UserID=3,PermissionID=2},
-            new UserPermission{UserID=4,PermissionID=2}
+                new UserPermission {
+                    UserID = users.Single(u => u.Name == "Jim Fig").ID,
+                    PermissionID = permissions.Single(p => p.Title == "Write").PermissionID
+                },
+                new UserPermission {
+                    UserID = users.Single(u => u.Name == "Jim Fig").ID,
+                    PermissionID = permissions.Single(p => p.Title == "Delete").PermissionID
+                },
+                new UserPermission {
+                    UserID = users.Single(u => u.Name == "Jane Doe").ID,
+                    PermissionID = permissions.Single(p => p.Title == "ReadOnly").PermissionID
+                },
+                new UserPermission {
+                    UserID = users.Single(u => u.Name == "Joe Bloggs").ID,
+                    PermissionID = permissions.Single(p => p.Title == "Write").PermissionID
+                },
+                new UserPermission {
+                    UserID = users.Single(u => u.Name == "Ann Other").ID,
+                    PermissionID = permissions.Single(p => p.Title == "Write").PermissionID
+                }
             };
             foreach (UserPermission u in userpermissions)
             {

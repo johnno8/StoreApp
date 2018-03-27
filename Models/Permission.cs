@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 using System;
@@ -11,7 +12,11 @@ namespace StoreApp.Models
     {
         public int PermissionID { get; set; }
         //public int ID { get; set; }
+        [Required]
+        [StringLength(50, ErrorMessage = "Title cannot be longer than 50 characters.")]
         public string Title { get; set; }
+        [Required]
+        [StringLength(150, ErrorMessage = "Description cannot be longer than 150 characters.")]
         public string Description { get; set; }
 
         public ICollection<UserPermission> UserPermissions { get; set; }

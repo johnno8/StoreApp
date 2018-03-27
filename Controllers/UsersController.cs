@@ -50,40 +50,53 @@ namespace StoreApp.Controllers
         // GET: Users/Create
         public IActionResult Create()
         {
+            var user = new User();
+            user.UserPermissions = new List<UserPermission>();
+            PopulateUserPermissionData(user);
             return View();
         }
  
         // POST: Users/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+        // public async Task<IActionResult> Create([Bind("ID,Name,Address,Nationality")] User user)
+        // {
+        //     if (ModelState.IsValid)
+        //     {
+        //         _context.Add(user);
+        //         await _context.SaveChangesAsync();
+        //         return RedirectToAction(nameof(Index));
+        //     }
+        //     return View(user);
+        // }
+
+        // POST: Users/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Address,Nationality")] User user)
+        public async Task<IActionResult> Create([Bind("Name,Address,Nationality")] User user, string[] selectedPermissions)
         {
+            if (selectedPermissions != null)
+            {
+                user.UserPermissions = new List<UserPermission>();
+                foreach (var perm in selectedPermissions)
+                {
+                    var permissionToAdd = new UserPermission { UserID = user.ID, PermissionID = int.Parse(perm) };
+                    user.UserPermissions.Add(permissionToAdd);
+                }
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            PopulateUserPermissionData(user);
             return View(user);
         }
- 
+
         // GET: Users/Edit/5
-        // public async Task<IActionResult> Edit(int? id)
-        // {
-        //     if (id == null)
-        //     {
-        //         return NotFound();
-        //     }
- 
-        //     var user = await _context.Users.SingleOrDefaultAsync(m => m.ID == id);
-        //     if (user == null)
-        //     {
-        //         return NotFound();
-        //     }
-        //     return View(user);
-        // }
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -120,42 +133,8 @@ namespace StoreApp.Controllers
             }
             ViewData["Permissions"] = viewModel;
         }
- 
+        
         // POST: Users/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        // [HttpPost]
-        // [ValidateAntiForgeryToken]
-        // public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Address,Nationality")] User user)
-        // {
-        //     if (id != user.ID)
-        //     {
-        //         return NotFound();
-        //     }
- 
-        //     if (ModelState.IsValid)
-        //     {
-        //         try
-        //         {
-        //             _context.Update(user);
-        //             await _context.SaveChangesAsync();
-        //         }
-        //         catch (DbUpdateConcurrencyException)
-        //         {
-        //             if (!UserExists(user.ID))
-        //             {
-        //                 return NotFound();
-        //             }
-        //             else
-        //             {
-        //                 throw;
-        //             }
-        //         }
-        //         return RedirectToAction(nameof(Index));
-        //     }
-        //     return View(user);
-        // }
- 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int? id, string[] selectedPermissions)
@@ -175,10 +154,6 @@ namespace StoreApp.Controllers
                 "",
                 i => i.Name, i => i.Address, i => i.Nationality))
             {
-                // if (String.IsNullOrWhiteSpace(userToUpdate.OfficeAssignment?.Location))
-                // {
-                //     userToUpdate.OfficeAssignment = null;
-                // }
                 UpdateUserPermissions(selectedPermissions, userToUpdate);
                 try
                 {

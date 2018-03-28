@@ -41,14 +41,6 @@ namespace StoreApp.Data
             }
             context.SaveChanges();
 
-            // var userpermissions = new UserPermission[]
-            // {
-            // new UserPermission{UserID=1,PermissionID=2},
-            // new UserPermission{UserID=1,PermissionID=3},
-            // new UserPermission{UserID=2,PermissionID=1},
-            // new UserPermission{UserID=3,PermissionID=2},
-            // new UserPermission{UserID=4,PermissionID=2}
-            // };
             var userpermissions = new UserPermission[]
             {
                 new UserPermission {

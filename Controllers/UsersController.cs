@@ -55,22 +55,6 @@ namespace StoreApp.Controllers
             PopulateUserPermissionData(user);
             return View();
         }
- 
-        // POST: Users/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        // [HttpPost]
-        // [ValidateAntiForgeryToken]
-        // public async Task<IActionResult> Create([Bind("ID,Name,Address,Nationality")] User user)
-        // {
-        //     if (ModelState.IsValid)
-        //     {
-        //         _context.Add(user);
-        //         await _context.SaveChangesAsync();
-        //         return RedirectToAction(nameof(Index));
-        //     }
-        //     return View(user);
-        // }
 
         // POST: Users/Create
         [HttpPost]

@@ -2,7 +2,9 @@
 Web application built as a candidate developer assessment.
 
 ### Pre-requisites
-The application was developed on a Mac using VS Code. For this reason the app as configured connects to MS SQL Server running in a Docker container. To install Docker go to https://docs.docker.com/docker-for-windows/install
+The application was developed on a Mac using VS Code. For this reason the app as configured connects to MS SQL Server running in a Docker container. To install Docker go to https://docs.docker.com/docker-for-windows/install or https://docs.docker.com/docker-for-mac/install
+
+To install .NET Core for Mac, go to https://www.microsoft.com/net/download/macos
 
 ### Clone the repo
 Clone the repo:
